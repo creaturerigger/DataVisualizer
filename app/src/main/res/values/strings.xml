@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DataVisualizer</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="log_in">Log in</string>
+    <string name="enter_your_e_mail">Enter your e-mail</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="forgot_password"><u>Forgot password?</u></string>
+    <string name="empty_fields">You should enter your user information to log-in</string>
+    <string name="is_not_valid_email">E-mail address is not in valid format</string>
+    <string name="logging_in">Logging in</string>
+</resources>
