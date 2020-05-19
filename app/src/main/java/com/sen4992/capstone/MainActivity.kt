@@ -14,17 +14,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         auth = FirebaseAuth.getInstance()
         val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
-        val fragment: Fragment
+        var fragment: Fragment
         if(currentFragment == null) {
-            fragment = if (auth.currentUser == null){
-                LoginFragment()
+            /*fragment = if (auth.currentUser == null){
+                LoginFragment.newInstance()
             } else {
-                DataFragment()
+                DataFragment.newInstance()
+            }*/
+            auth.addAuthStateListener{ auth ->
+               fragment = if(auth.currentUser != null){
+                    DataFragment.newInstance()
+                }
+                else {
+                    LoginFragment.newInstance()
+                }
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit()
             }
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_container, fragment)
-                .commit()
+
         }
     }
 
