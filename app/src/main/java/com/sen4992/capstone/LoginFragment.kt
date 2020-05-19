@@ -54,9 +54,18 @@ class LoginFragment : Fragment() {
             if (isInfoValid) {
                 val isSignedIn: Boolean = signIn(userEmailText, userPasswordText)
                 Log.d(TAG, "isSignedIn = $isSignedIn")
+                if (isSignedIn) {
+                    updateUI(DataFragment)
+                }
             }
         }
         return view
+    }
+
+    private fun updateUI(fragment: Fragment) {
+        if (activity != null) {
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
+        }
     }
 
     private fun isEmailValid(email: String): Boolean {
